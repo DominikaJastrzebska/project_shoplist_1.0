@@ -6,7 +6,8 @@ import shoplist_v1_1 as sl2
 
 
 def main():
-    letters = string.ascii_lowercase
+    # letters = string.ascii_lowercase
+    letters = 'ab'
     for letter in letters:
         meals_a_json = sl.request_recipe(letter)
         recipe_list = sl.get_recipe_list(meals_a_json)

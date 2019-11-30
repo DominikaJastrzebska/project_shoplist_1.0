@@ -58,7 +58,9 @@ def get_recipe(recipe_list):  # [{}, {}, {}]
         dict_of_meals[recipe['strMeal']] = ingredients_measure
         list_of_number_ingredients = get_ingredients_numbers(recipe)
         for i in list_of_number_ingredients:  # nie wiem jak to zrobic, zeby tutaj wcisnac ta liste, ktora mi obrabia ten zakres?
-            ingredients_measure.append((recipe[f'strIngredient{i}'], recipe[f'strMeasure{i}']))
+            if recipe[f'strIngredient{i}'] is not None:
+                ingredients_measure.append((recipe[f'strIngredient{i}'], recipe[f'strMeasure{i}']))
+            # ingredients_measure.append((recipe[f'strIngredient{i}'], recipe[f'strMeasure{i}']))
 
         dict_of_meals[recipe['strMeal']] = dict(ingredients_measure)
     return dict_of_meals
