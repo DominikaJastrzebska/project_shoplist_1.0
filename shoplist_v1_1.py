@@ -1,5 +1,9 @@
 import shoplist_v1_0 as sl  # dlaczego nie mozna shoplist_1.0?
 
+"""
+Moduł tworzy listę zakupów na literkę zdefiniowaną w shoppinglist_v1_0 oraz zapisuje ją do pliku csv
+"""
+
 
 def export_to_csv(ingredients_dictionary):
     for ingredient, measure in ingredients_dictionary.items():

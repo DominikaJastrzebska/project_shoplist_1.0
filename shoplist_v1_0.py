@@ -9,6 +9,9 @@ import string
 #     meals = requests.get(f'https://www.themealdb.com/api/json/v1/1/search.php?f={letter}')
 # with open('meals.txt', 'w') as f:
 #     f.write(meals.text)
+"""
+Moduł tworzy listę zakupów z przepisów na jedną literkę
+"""
 
 
 def get_letter():
@@ -32,6 +35,10 @@ def request_recipe(letter):
 
 
 def get_recipe_list(meals_a_json):
+    '''
+    :param meals_a_json:
+    :return: lista, ktorej elementami są słowniki z odpowiednimi przepisami
+    '''
     recipe_list = meals_a_json['meals']
     return recipe_list
 
@@ -42,7 +49,7 @@ def get_names_of_recipes(recipe_list):
     : wyświetla nazwy przepisów na daną literkę
     '''
     for element in recipe_list:
-        return element['strMeal']
+        print(element['strMeal'])
 
 
 def get_recipe(recipe_list):  # [{}, {}, {}]
@@ -89,7 +96,7 @@ def get_ingredients_dict(ingredients_list):
             if ingredient not in ingredients_dictionary.keys():
                 ingredients_dictionary[ingredient] = measure
             else:
-                ingredients_dictionary[ingredient] = ingredients_dictionary[ingredient] + measure
+                ingredients_dictionary[ingredient] = ingredients_dictionary[ingredient] + ' * ' +measure
     return ingredients_dictionary
 
 
@@ -131,8 +138,7 @@ def main():
     print()
 
     print(f'---------------------Nazwy przepisów na literkę {letter}------------------------')
-    names_of_reciepes = get_names_of_recipes(recipe_list)
-    print(names_of_reciepes)
+    get_names_of_recipes(recipe_list)
     print()
 
     print(f'---------Słownik przepisów na literkę {letter}, gdzie klucz to nazwa przepisu '
