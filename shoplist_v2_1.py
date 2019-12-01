@@ -1,23 +1,22 @@
-from pprint import pprint as pp
-import requests
-import string
 import shoplist_v1_0 as sl
+import get_first_letters as gfl
 import shoplist_v1_1 as sl2
 
 """
-Moduł tworzy listę zakupów na kilka literek oraz zapisuje ją do pliku
+Moduł tworzy listę zakupów z przepisów podanych przez użytkownika
 """
 
 
 def main():
-    # letters = string.ascii_lowercase
     recipe_list_all_letters = []
-    letters = 'ad'
+    list_of_words = gfl.get_recipe_from_user()
+    letters = gfl.get_first_letters_from_recipes(list_of_words)
     for letter in letters:
         meals_a_json = sl.request_recipe(letter)
         recipe_list = sl.get_recipe_list(meals_a_json)
         for meals_dict in recipe_list:
-            recipe_list_all_letters.append(meals_dict)
+            if meals_dict['strMeal'] in list_of_words:
+                recipe_list_all_letters.append(meals_dict)
     print(recipe_list_all_letters)
     dict_of_meals = sl.get_recipe(recipe_list_all_letters)
     ingredients_list = sl.get_ingredients_list(dict_of_meals)

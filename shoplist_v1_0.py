@@ -18,7 +18,7 @@ def get_letter():
     """
     funkcja jako argument przyjmuje literę, zwraca literę
     """
-    letter = 'b'
+    letter = 'a'
     return letter
 
 
