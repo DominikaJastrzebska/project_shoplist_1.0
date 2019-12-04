@@ -26,6 +26,9 @@ def main():
     print(f'---------------------Nazwy przepisów:------------------------')
     sl.get_names_of_recipes(recipe_list_all_letters)
 
+    print('-------------------Lista zakupów-------------------------')
+    sl.make_shopping_list(ingredients_dictionary)
+
 
 if __name__ == '__main__':
     main()
